@@ -8,7 +8,7 @@ CRECI_API_HOST = "https://crecidf-api-002-2d82d2b4dcc1.herokuapp.com"
 
 @app.get("/")
 def home():
-    return {"message":"API CRECI DF | JUCA"}
+    return {"message": "API CRECI DF | JUCA"}
 
 # Endpoint para receber o número CRECI e retornar as informações
 @app.post("/creci_info/", tags=["CRECI – DF"])
@@ -25,9 +25,9 @@ def get_creci_info(creci_number: str):
     if not creci_data:
         raise HTTPException(status_code=404, detail="Erro ao validar o CRECI.")
     
-    # 3. Retornar os dados coletados
+    # 3. Incluir o userId nos dados de resposta e retornar os dados coletados
+    creci_data["userId"] = user_id
     return creci_data
-
 
 def get_user_id_by_creci_number(creci_number: str) -> str:
     url = f"{CRECI_API_HOST}/getUserIdByCreciNumber"
@@ -40,7 +40,6 @@ def get_user_id_by_creci_number(creci_number: str) -> str:
         return response.json().get("userId")
     else:
         return None
-
 
 def verify_certificate(user_id: str) -> dict:
     url = f"{CRECI_API_HOST}/verifyCertificate"
