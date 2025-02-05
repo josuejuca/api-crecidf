@@ -3,7 +3,7 @@ import requests
 
 app = FastAPI()
 
-CRECI_API_HOST = "https://crecidf-api-002-2d82d2b4dcc1.herokuapp.com"
+CRECI_API_HOST = "https://api.crecidf.gov.br"
 
 @app.get("/")
 def home():
