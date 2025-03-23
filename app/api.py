@@ -29,7 +29,7 @@ def buscar_corretor(consulta: str = Query(..., description="Número de CRECI, no
     try:
         url = f"{CRECI_API_HOST}/findBroker"
         headers = {"Content-Type": "application/json"}
-        data = {"query": consulta}  # Enviando o valor no formato correto com 'query' como chave
+        data = {"captcha":"191697","query": consulta , "validator":"Jef8G+Kvy6foLG6YKN0+Ug==$mwggTnMAZcMjqRuEwqSJ76VZTg58hmwhG0tBmyoK3w/AAqFoznMk9Nc7ABp0XokQ8rgV0ZoW5vRSXPBrr6U0ag=="}  # Enviando o valor no formato correto com 'query' 
 
         response = requests.post(url, headers=headers, json=data)
 
