@@ -27,16 +27,17 @@ def get_creci_info(creci_number: str):
 @app.post("/buscar_corretor/", tags=["CRECI – DF"])
 def buscar_corretor(consulta: str = Query(..., description="Número de CRECI, nome, CPF ou CNPJ do corretor")):
     try:
-        url = f"{CRECI_API_HOST}/findBroker"
+        url = f"{CRECI_API_HOST}/findBroker1"
+        
         headers = {"Content-Type": "application/json"}
-        data = {"captcha":"191697","query": consulta , "validator":"Jef8G+Kvy6foLG6YKN0+Ug==$mwggTnMAZcMjqRuEwqSJ76VZTg58hmwhG0tBmyoK3w/AAqFoznMk9Nc7ABp0XokQ8rgV0ZoW5vRSXPBrr6U0ag=="}  # Enviando o valor no formato correto com 'query' 
+        data = {"captcha":"52422","query": consulta , "validator":"aAeC+AIroiNEAYG/d3gIZA==$92Z60McJFbNcoFzfyPfN7rPbV6wZdVFHWKycFAcOeZy3+pvWr0Bu4IwgEr3xHVHhstWa0bn0Vhk25SOVqz32yA=="}  # Enviando o valor no formato correto com 'query' 
 
         response = requests.post(url, headers=headers, json=data)
 
         if response.status_code == 200:
             return response.json()
         else:
-            raise HTTPException(status_code=response.status_code, detail="Erro ao buscar informações do corretor.")
+            raise HTTPException(status_code=response.status_code, detail=response.text)
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Erro interno: {str(e)}")
