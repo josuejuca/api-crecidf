@@ -1,4 +1,4 @@
-# API CRECI DF
+# API CRECI DF / bug
 
 Esta API foi desenvolvida para facilitar a obtenção de informações de regularidade de corretores utilizando o número CRECI. Ela interage com a API do CRECI DF para validar a certidão de regularidade de um corretor específico.
 
